@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: api
-        image: ghcr.io/kkogaa/extracto-fetch-api:IMAGE_TAG
+        image: ghcr.io/kkogaa/extracto-fetch-api:628dc33
         imagePullPolicy: Always
         ports:
         - containerPort: 3000
