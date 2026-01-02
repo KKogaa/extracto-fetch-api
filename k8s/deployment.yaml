@@ -15,6 +15,8 @@ spec:
       labels:
         app: extracto-fetch-api
     spec:
+      imagePullSecrets:
+      - name: ghcr-secret
       containers:
       - name: api
         image: ghcr.io/kkogaa/extracto-fetch-api:628dc33
