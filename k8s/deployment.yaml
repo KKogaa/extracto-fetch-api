@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: extracto-fetch-api
+  namespace: extracto
+  labels:
+    app: extracto-fetch-api
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: extracto-fetch-api
+  template:
+    metadata:
+      labels:
+        app: extracto-fetch-api
+    spec:
+      containers:
+      - name: api
+        image: ghcr.io/kkogaa/extracto-fetch-api:IMAGE_TAG
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3000
+          name: http
+        env:
+        - name: PORT
+          value: "3000"
+        - name: REDIS_HOST
+          value: "redis.extracto.svc.cluster.local"
+        - name: REDIS_PORT
+          value: "6379"
+        - name: NODE_ENV
+          value: "production"
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "100m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 3000
+          initialDelaySeconds: 10
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 3000
+          initialDelaySeconds: 5
+          periodSeconds: 5
