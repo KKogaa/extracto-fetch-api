@@ -54,9 +54,6 @@ Thumbs.db
 .npm/
 .yarn/
 .pnpm-store/
-yarn.lock
-package-lock.json
-pnpm-lock.yaml
 
 # Temporary files
 *.tmp
