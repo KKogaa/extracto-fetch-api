@@ -19,7 +19,7 @@ spec:
       - name: ghcr-secret
       containers:
       - name: api
-        image: ghcr.io/kkogaa/extracto-fetch-api:d9fd2c6
+        image: ghcr.io/kkogaa/extracto-fetch-api:6cc29bc
         imagePullPolicy: Always
         ports:
         - containerPort: 3000
